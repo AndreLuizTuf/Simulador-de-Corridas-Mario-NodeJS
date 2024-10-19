@@ -170,6 +170,20 @@ async function playRaceEngine(character1, character2) {
 // Provavelmente deve conter código para simular uma corrida entre dois personagens
 // Podemos esperar encontrar operações assíncronas dentro dela, como chamadas a APIs ou promessas
 
+
+async function declareWinner(character1, character2) {
+  console.log("Resultado final: ");
+  console.log(`${character1.NOME}: ${character1.PONTOS} pontos(s)`);
+  console.log(`${character2.NOME}: ${character2.PONTOS} pontos(s)`); 
+  
+  if (character1.PONTOS > character2.PONTOS) {
+    console.log(`\n${character1.NOME} venceu a corrida! Parabéns! 🏆`);    
+  } else if (character2.PONTOS > character1.PONTOS) {
+    console.log(`\n${character2.NOME} venceu a corrida! Parabéns! 🏆`);
+  } else {
+    console.log("A corrida terminou em empate");    
+  }
+}
 // Função auto invocável
 (async function main() {
   // Declara uma função assíncrona chamada main
@@ -188,7 +202,7 @@ async function playRaceEngine(character1, character2) {
   // e inserir variáveis diretamente na string usando ${variavel}
 
   await playRaceEngine(player1, player2); // Chama a função playRaceEngine com os jogadores
-
+  await declareWinner(player1, player2); // Chama a função declareWinner passando os jogadores como argumentos
   // Esta linha chama a função playRaceEngine passando os objetos player1 e player2 como argumentos
   // A palavra-chave await indica que esta linha deve aguardar a conclusão da função playRaceEngine antes de continuar
   // Isso é útil quando a função playRaceEngine contiver operações assíncronas ou promessas
