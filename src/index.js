@@ -47,6 +47,15 @@ async function getRandomBlock() {
   // Retorna o tipo de bloco aleatoriamente determinado
   return result;
 }
+
+async function logRollResult(characterName, block, diceResult, attribute) {
+  console.log(
+    `${characterName} 🎲 rolou um dado de ${block} ${diceResult} + ${attribute} = ${
+      diceResult + attribute
+    }`
+  );
+}
+
 async function playRaceEngine(character1, character2) {
   for (let round = 1; round <= 5; round++) {
     console.log(`🏁Rodada ${round}`);
@@ -66,49 +75,91 @@ async function playRaceEngine(character1, character2) {
     if (block === "META") {
       // habilidade de meta: rolar dois dados e somar os resultados
       totalTestSkill1 = diceResult1 + character1.VELOCIDADE;
-      totalTestSkill2 = diceResult2 + character2.VELOCIDADE;      
+      totalTestSkill2 = diceResult2 + character2.VELOCIDADE;
+
+      await logRollResult(
+        character1.NOME,
+        "velocidade",
+        diceResult1,
+        character1.VELOCIDADE
+      );
+
+      await logRollResult(
+        character2.NOME,
+        "velocidade",
+        diceResult2,
+        character2.VELOCIDADE
+      );
     }
     if (block === "CURVA") {
       // habilidade de curva: rolar dois dados e somar os resultados
       totalTestSkill1 = diceResult2 + character1.MANOBRABILIDADE;
-      totalTestSkill2 = diceResult2 + character2.MANOBRABILIDADE;     
+      totalTestSkill2 = diceResult2 + character2.MANOBRABILIDADE;
+
+      await logRollResult(
+        character1.NOME,
+        "manobrabilidade",
+        diceResult1,
+        character1.MANOBRABILIDADE
+      );
+
+      await logRollResult(
+        character2.NOME,
+        "manobrabilidade",
+        diceResult2,
+        character2.MANOBRABILIDADE
+      );
     }
-    if (block === "CONFRONTO") { 
+    if (block === "CONFRONTO") {
       let powerResult1 = diceResult1 + character1.PODER;
       let powerResult2 = diceResult2 + character2.PODER;
+
+      await logRollResult(
+        character1.NOME,
+        "poder",
+        diceResult1,
+        character1.PODER
+      );
+
+      await logRollResult(
+        character2.NOME,
+        "poder",
+        diceResult2,
+        character2.PODER
+      );
     }
   }
   // Esta função está vazia, mas foi declarada como assíncrona
   // Ela espera receber dois parâmetros: character1 e character2
   // Ambos devem ser objetos com propriedades como NOME, VELOCIDADE, etc.
-  
+
   // A função não contém nenhuma lógica implementada
   // Provavelmente deve conter código para simular uma corrida entre dois personagens
   // Podemos esperar encontrar operações assíncronas dentro dela, como chamadas a APIs ou promessas
-  
+
   // Função auto invocável
   (async function main() {
     // Declara uma função assíncrona chamada main
     console.log(
       `🏁🚨 Corrida entre ${player1.NOME} e ${player2.NOME} começando... \n`
     ); // Imprime uma mensagem formatada na consola
-    
+
     // Esta linha imprime uma string que inclui:
     // - Um emoji de bandeira 🏁
     // - Um sinal de alerta 🚨
     // - O nome dos dois jogadores separados por "e"
     // - A frase "correndo..."
     // - Uma quebra de linha \n
-    
+
     // A função usa template literals (backticks ``) para criar strings multilineares
     // e inserir variáveis diretamente na string usando ${variavel}
-    
+
     await playRaceEngine(player1, player2); // Chama a função playRaceEngine com os jogadores
-    
+
     // Esta linha chama a função playRaceEngine passando os objetos player1 e player2 como argumentos
     // A palavra-chave await indica que esta linha deve aguardar a conclusão da função playRaceEngine antes de continuar
     // Isso é útil quando a função playRaceEngine contiver operações assíncronas ou promessas
-    
+
     // Se a função playRaceEngine retornar uma Promise, esta linha irá esperar que ela seja resolvida antes de prosseguir
     // Caso contrário, se a função não retornar nada, esta linha simplesmente continuará sem aguardar
   })();
