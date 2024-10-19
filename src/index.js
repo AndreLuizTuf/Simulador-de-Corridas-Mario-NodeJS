@@ -1,6 +1,6 @@
 // Definindo os jogadores
 const player1 = {
-  Nome: "Mario", // Nome do jogador 1
+  NOME: "Mario", // Nome do jogador 1
   VELOCIDADE: 4, // Velocidade do Mario
   MANOBRABILIDADE: 3, // Nível de habilidade de manobras do Mario
   PODER: 3, // Nível de poder do Mario
@@ -8,7 +8,7 @@ const player1 = {
 };
 
 const player2 = {
-  Nome: "Luigi", // Nome do jogador 2
+  NOME: "Luigi", // Nome do jogador 2
   VELOCIDADE: 5, // Velocidade do Luigi
   MANOBRABILIDADE: 2, // Nível de habilidade de manobras do Luigi
   PODER: 2, // Nível de poder do Luigi
@@ -21,11 +21,10 @@ async function rollDice() {
 };
 
 // Função auto invocável
-// Função auto invocável
 (async function main() { // Declara uma função assíncrona chamada main
-    console.log("Hello!"); // Imprime "Hello!" na consola
+    console.log(`🏁🚨 Corrida entre ${player1.NOME} e ${player2.NOME} começando... \n`); // Imprime "Hello!" na consola
     
-}); // Fecha a declaração da função
+})(); // Fecha a declaração da função
 
 // A função é imediatamente invocada após sua definição
 // Isso significa que "Hello!" será impresso assim que a função for definida
