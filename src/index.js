@@ -54,6 +54,14 @@ async function playRaceEngine(character1, character2) {
     // sortear bloco
     let block = await getRandomBlock();
     console.log(`Bloco: ${block}`);
+
+    // rolar os dados
+    let diceResult = await rollDice();
+    let diceResult2 = await rollDice();
+
+    // teste de habilidade
+    let totalTestSkill1 = 0;
+    let totalTestSkill2 = 0;
   } // Declara uma função assíncrona chamada playRaceEngine
 }
 // Esta função está vazia, mas foi declarada como assíncrona
