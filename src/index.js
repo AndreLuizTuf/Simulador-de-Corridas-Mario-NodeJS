@@ -18,4 +18,14 @@ const player2 = {
 // Função para rolar o dado
 async function rollDice() {
     return Math.floor(Math.random() * 6) + 1; // Gera um número aleatório entre 1 e 6
-}
+};
+
+// Função auto invocável
+// Função auto invocável
+(async function main() { // Declara uma função assíncrona chamada main
+    console.log("Hello!"); // Imprime "Hello!" na consola
+    
+}); // Fecha a declaração da função
+
+// A função é imediatamente invocada após sua definição
+// Isso significa que "Hello!" será impresso assim que a função for definida
