@@ -56,7 +56,7 @@ async function playRaceEngine(character1, character2) {
     console.log(`Bloco: ${block}`);
 
     // rolar os dados
-    let diceResult = await rollDice();
+    let diceResult1 = await rollDice();
     let diceResult2 = await rollDice();
 
     // teste de habilidade
@@ -65,16 +65,17 @@ async function playRaceEngine(character1, character2) {
 
     if (block === "META") {
       // habilidade de meta: rolar dois dados e somar os resultados
-      totalTestSkill1 = diceResult + character1.VELOCIDADE;
-      totalTestSkill2 = diceResult + character2.VELOCIDADE;      
+      totalTestSkill1 = diceResult1 + character1.VELOCIDADE;
+      totalTestSkill2 = diceResult2 + character2.VELOCIDADE;      
     }
     if (block === "CURVA") {
       // habilidade de curva: rolar dois dados e somar os resultados
-      totalTestSkill1 = diceResult + diceResult2 + character1.MANOBRABILIDADE;
-      totalTestSkill2 = diceResult + diceResult2 + character2.MANOBRABILIDADE;     
+      totalTestSkill1 = diceResult2 + character1.MANOBRABILIDADE;
+      totalTestSkill2 = diceResult2 + character2.MANOBRABILIDADE;     
     }
     if (block === "CONFRONTO") { 
-          
+      let powerResult1 = diceResult1 + character1.PODER;
+      let powerResult2 = diceResult2 + character2.PODER;
     }
   }
   // Esta função está vazia, mas foi declarada como assíncrona
