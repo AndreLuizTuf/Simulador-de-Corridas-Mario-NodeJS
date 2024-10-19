@@ -93,7 +93,7 @@ async function playRaceEngine(character1, character2) {
     }
     if (block === "CURVA") {
       // habilidade de curva: rolar dois dados e somar os resultados
-      totalTestSkill1 = diceResult2 + character1.MANOBRABILIDADE;
+      totalTestSkill1 = diceResult1 + character1.MANOBRABILIDADE;
       totalTestSkill2 = diceResult2 + character2.MANOBRABILIDADE;
 
       await logRollResult(
@@ -128,42 +128,52 @@ async function playRaceEngine(character1, character2) {
         character2.PODER
       );
     }
+
+    // verificando o vencedor
+    if (totalTestSkill1 > totalTestSkill2) {
+      console.log(`${character1.NOME} marcou um ponto!`);
+      character1.PONTOS++;
+    } else if (totalTestSkill2 > totalTestSkill1) {
+      console.log(`${character2.NOME} marcou um ponto!`);
+      character2.PONTOS++;
+    }
+    console.log("------------------------");
   }
-  // Esta função está vazia, mas foi declarada como assíncrona
-  // Ela espera receber dois parâmetros: character1 e character2
-  // Ambos devem ser objetos com propriedades como NOME, VELOCIDADE, etc.
+}
+// Esta função está vazia, mas foi declarada como assíncrona
+// Ela espera receber dois parâmetros: character1 e character2
+// Ambos devem ser objetos com propriedades como NOME, VELOCIDADE, etc.
 
-  // A função não contém nenhuma lógica implementada
-  // Provavelmente deve conter código para simular uma corrida entre dois personagens
-  // Podemos esperar encontrar operações assíncronas dentro dela, como chamadas a APIs ou promessas
+// A função não contém nenhuma lógica implementada
+// Provavelmente deve conter código para simular uma corrida entre dois personagens
+// Podemos esperar encontrar operações assíncronas dentro dela, como chamadas a APIs ou promessas
 
-  // Função auto invocável
-  (async function main() {
-    // Declara uma função assíncrona chamada main
-    console.log(
-      `🏁🚨 Corrida entre ${player1.NOME} e ${player2.NOME} começando... \n`
-    ); // Imprime uma mensagem formatada na consola
+// Função auto invocável
+(async function main() {
+  // Declara uma função assíncrona chamada main
+  console.log(
+    `🏁🚨 Corrida entre ${player1.NOME} e ${player2.NOME} começando... \n`
+  ); // Imprime uma mensagem formatada na consola
 
-    // Esta linha imprime uma string que inclui:
-    // - Um emoji de bandeira 🏁
-    // - Um sinal de alerta 🚨
-    // - O nome dos dois jogadores separados por "e"
-    // - A frase "correndo..."
-    // - Uma quebra de linha \n
+  // Esta linha imprime uma string que inclui:
+  // - Um emoji de bandeira 🏁
+  // - Um sinal de alerta 🚨
+  // - O nome dos dois jogadores separados por "e"
+  // - A frase "correndo..."
+  // - Uma quebra de linha \n
 
-    // A função usa template literals (backticks ``) para criar strings multilineares
-    // e inserir variáveis diretamente na string usando ${variavel}
+  // A função usa template literals (backticks ``) para criar strings multilineares
+  // e inserir variáveis diretamente na string usando ${variavel}
 
-    await playRaceEngine(player1, player2); // Chama a função playRaceEngine com os jogadores
+  await playRaceEngine(player1, player2); // Chama a função playRaceEngine com os jogadores
 
-    // Esta linha chama a função playRaceEngine passando os objetos player1 e player2 como argumentos
-    // A palavra-chave await indica que esta linha deve aguardar a conclusão da função playRaceEngine antes de continuar
-    // Isso é útil quando a função playRaceEngine contiver operações assíncronas ou promessas
+  // Esta linha chama a função playRaceEngine passando os objetos player1 e player2 como argumentos
+  // A palavra-chave await indica que esta linha deve aguardar a conclusão da função playRaceEngine antes de continuar
+  // Isso é útil quando a função playRaceEngine contiver operações assíncronas ou promessas
 
-    // Se a função playRaceEngine retornar uma Promise, esta linha irá esperar que ela seja resolvida antes de prosseguir
-    // Caso contrário, se a função não retornar nada, esta linha simplesmente continuará sem aguardar
-  })();
-} // Declara uma função assíncrona chamada playRaceEngine
+  // Se a função playRaceEngine retornar uma Promise, esta linha irá esperar que ela seja resolvida antes de prosseguir
+  // Caso contrário, se a função não retornar nada, esta linha simplesmente continuará sem aguardar
+})();
 
 // A função é imediatamente invocada após sua definição
 // Isso significa que a mensagem será impressa assim que a função for definida
