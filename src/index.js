@@ -20,11 +20,40 @@ async function rollDice() {
   return Math.floor(Math.random() * 6) + 1; // Gera um número aleatório entre 1 e 6
 }
 
+// Função para obter um tipo de bloco aleatório
+async function getRandomBlock() {
+  // Gera um número aleatório entre 0 e 1
+  let random = Math.random();
+
+  // Variável para armazenar o resultado
+  let result;
+
+  // Usa uma estrutura switch para determinar o tipo de bloco com base no valor aleatório
+  switch (true) {
+    // Se o valor aleatório for menor que 0.33, é um bloco RETA
+    case random < 0.33:
+      result = "RETA";
+      break;
+    // Se o valor aleatório estiver entre 0.33 e 0.66, é um bloco CURVA
+    case random < 0.66:
+      result = "CURVA";
+      break;
+    // Caso contrário, é um bloco CONFRONTO
+    default:
+      result = "CONFRONTO";
+      break;
+  }
+
+  // Retorna o tipo de bloco aleatoriamente determinado
+  return result;
+}
 async function playRaceEngine(character1, character2) {
   for (let round = 1; round <= 5; round++) {
-    console.log(`🏁Rodada ${round}`  );
-   
+    console.log(`🏁Rodada ${round}`);
+
     // sortear bloco
+    let block = await getRandomBlock();
+    console.log(`Bloco: ${block}`);
   } // Declara uma função assíncrona chamada playRaceEngine
 }
 // Esta função está vazia, mas foi declarada como assíncrona
